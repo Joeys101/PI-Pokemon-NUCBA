@@ -89,7 +89,7 @@ body {
     margin: 10px;
     
 }
-#search-box {
+#search-box { 
     padding: 15px;
     background-color: rgba(0, 0, 0, 0.459);
     border: solid 2.5px black;
@@ -98,7 +98,7 @@ body {
     margin-bottom: 15px;
     font-weight: 650;
 }
-#botonesFiltro {
+#buttonsFilter {
     display: flex;
     justify-content: center;
     
@@ -123,40 +123,56 @@ button:hover{
  /* Pokemons */
 
 
-/* .pokemonBox {
+ .pokemonBox {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    margin: 50px 0 0 100px;
+    margin: 50px 0 0 0px;
+    
     
   }
-.pokemons img {
-    margin: -50px 0px 0 60px;
-}
+
 .imgPokemon ,h3 ,p {
     display: flex;
     justify-content: center;
     margin: 20px 0 20px 0;
+
+}
+h3, p {
     font-family: 'Telex', sans-serif;
     font-weight: 600;
     font-size: 16px;
+    margin-top: -5px;
 }
 .imgPokemon {
-    width: 120px;
-    height: 120px;
+    width: 135px;
+    height: 135px;
+    margin: -50px 0 0 150px;
 }
 .pokemons:hover {
-    color: rgb(0, 0, 0);
+    
+    background-color: orange;
     cursor: pointer;
-    border: solid 2px; 
+    color: white;
+    transition: all 0.3s ease 0s;
+    
    
 }
 .pokemons {
-    margin: 30px 20px 60px 20px;
+    margin: 30px 10px 60px 10px;
+    padding: 0px
     width: 60%;
     height: 70%;
     border-radius: 30px;
     background-color: rgb(255, 255, 255);
     transition: all 0.1s ease 0s;
+    border: solid 2px white;
+    
 }
 
- */
+.type {
+    width: 50px;
+    height: 50px;
+    margin: -50px 0 0px 50px;
+    border: solid 2px white;
+    border-radius: 100%;
+}
