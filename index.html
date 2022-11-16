@@ -33,14 +33,14 @@
         <input type="text" placeholder="Buscar productos" id="search-box">
     </div>
     <div id="buttonsFilter">
-        <button id="showAll" class="showAll">Mostrar todo</button>
-        <button id="lowPrice" class="lowPrice" type="button">Menor precio</button>
-        <button id="highPrice" class="highPrice">Mayor precio</button>
-        <button id="legendary" class="legendary">Legendarios</button>
-        <button id="singulary" class="singlary">Singulares</button>
-        <button id="starters" class="starters">Starters</button>
+        <button class="buttonValue" onclick="filterProduct('Mostrar todo')">Mostrar todo</button>
+        <button class="buttonValue" onclick="filterProduct('MenorPrecio')">Menor precio</button>
+        <button class="buttonValue" onclick="filterProduct('MayorPrecio')">Mayor precio</button>
+        <button class="buttonValue" onclick="filterProduct('Legendario')">Legendarios</button>
+        <button class="buttonValue" onclick="filterProduct('Singular')">Singulares</button>
+        <button class="buttonValue" onclick="filterProduct('Starter')">Starters</button>
    </div>
-   <div class="pokemonBox"></div>
+   <div class="pokemonBox" id="pokemonBox"></div>
     <script src="./app.js"></script> 
 </body>
 </html>

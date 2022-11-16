@@ -3,7 +3,8 @@ let pokemones = [
             nombre: "Bulbasaur",
             id: 0,
             caracteristica: "Starter",
-            precio: "$1.000",
+            caracteristica2: "MenorPrecio",
+            precio: 1000,
             image:"./pokemon/bulbasaur.png",
             tipo: "./pokemon/Planta.png"
         },
@@ -11,7 +12,8 @@ let pokemones = [
             nombre: "Squirtle",
             id: 1,
             caracteristica: "Starter",
-            precio: "$1.000",
+            caracteristica2: "MenorPrecio",
+            precio: 1000,
             image:"./pokemon/squirtle.png",
             tipo: "./pokemon/Agua.png"
         },
@@ -19,7 +21,8 @@ let pokemones = [
             nombre: "Charmander",
             id: 2,
             caracteristica: "Starter",
-            precio: "$1.000",
+            caracteristica2: "MenorPrecio",
+            precio: 1000,
             image:"./pokemon/charmander.png",
             tipo: "./pokemon/Fuego.png"
         },
@@ -27,7 +30,8 @@ let pokemones = [
             nombre: "Treecko",
             id: 3,
             caracteristica: "Starter",
-            precio: "$2.000",
+            caracteristica2: "MenorPrecio",
+            precio: 2000,
             image:"./pokemon/treecko.png",
             tipo: "./pokemon/Planta.png"
         },
@@ -35,7 +39,8 @@ let pokemones = [
             nombre: "Mudkip",
             id: 4,
             caracteristica: "Starter",
-            precio: "$1.700",
+            caracteristica2: "MenorPrecio",
+            precio: 1700,
             image:"./pokemon/mudkip.png",
             tipo:"./pokemon/Agua.png"
         },
@@ -43,7 +48,8 @@ let pokemones = [
             nombre: "Torchic",
             id: 5,
             caracteristica: "Starter",
-            precio: "$1.500",
+            caracteristica2: "MenorPrecio",
+            precio: 1500,
             image:"./pokemon/torchic.png",
             tipo:"./pokemon/Fuego.png"
         },
@@ -51,7 +57,8 @@ let pokemones = [
             nombre: "Kyogre",
             id: 6,
             caracteristica: "Legendario",
-            precio: "$19.000",
+            caracteristica2: "MayorPrecio",
+            precio: 19000,
             image:"./pokemon/kyogre.png",
             tipo:"./pokemon/Agua.png"
         },
@@ -59,7 +66,8 @@ let pokemones = [
             nombre: "Zekrom",
             id: 7,
             caracteristica: "Legendario",
-            precio: "$25.000",
+            caracteristica2: "MayorPrecio",
+            precio: 25000,
             image:"./pokemon/zekrom.png",
             tipo:"./pokemon/Electrico.png"
         },
@@ -67,7 +75,8 @@ let pokemones = [
             nombre: "Darkrai",
             id: 8,
             caracteristica: "Singular",
-            precio: "$50.000",
+            caracteristica2: "MayorPrecio",
+            precio: 50000,
             image:"./pokemon/darkrai.png",
             tipo:"./pokemon/Siniestro.png"
         },
@@ -79,16 +88,15 @@ let pokemones = [
     // Creacion de Pokemons
     const divGlobal = document.querySelector(".pokemonBox")
     
-    const fragment = document.createDocumentFragment()
     
     pokemones.forEach(item => {
-        const container = document.createElement("div")
-        const name = document.createElement("h3")
-        const price = document.createElement("p")
-        const img = document.createElement("img")
-        const type = document.createElement("img")
+    let container = document.createElement("div")
+    let name = document.createElement("h3")
+    let price = document.createElement("p")
+    let img = document.createElement("img")
+    let type = document.createElement("img")
 
-        price.textContent = "Precio:" + " " + item.precio
+        price.textContent = "Precio:" + " " + "$" + item.precio
         name.textContent = item.nombre
         img.src = item.image
         type.src = item.tipo
@@ -99,33 +107,47 @@ let pokemones = [
         container.appendChild(price)
         
         container.className = "pokemons"
-        container.id = "pokemons"
         img.className = "imgPokemon"
         type.className = "type"
+        container.id = "pokemons"  
+        img.id = "imgPokemon"
         type.id = "type"
         
-        fragment.appendChild(container)
-        
+        container.classList.add(item.caracteristica, item.caracteristica2, "hide");
+
+        divGlobal.appendChild(container)
     }) 
-    divGlobal.appendChild(fragment)
 
     // Funciones de botones
 
-    const lowPrice = document.getElementById("lowPrice")
-   
-
-  
-
-    lowPrice.addEventListener("click", e => {
-        pokemones.forEach(item => {
-            if(item.precio !== "$1.000"){
-                item.nombre = "CARO"
-                console.log(item.nombre);
-                document.getElementById("type").style.display = "none"
-            } else {
-                console.log("BARATO");
-            }
-        })
-    })
-        
+    function filterProduct(value) {
+	
     
+        let buttons = document.querySelectorAll(".buttonValue");
+        buttons.forEach((button) => {
+          
+          if (value.toUpperCase() == button.innerText.toUpperCase()) {
+            button.classList.add("active");
+          } else {
+            button.classList.remove("active");
+          }
+        }); 
+    
+
+        let elements = document.querySelectorAll(".pokemons");
+    
+        elements.forEach((element) => {
+          
+          if (value == "Mostrar todo") {
+            element.classList.remove("hide");
+          } else {
+            if (element.classList.contains(value)) {
+                element.classList.remove("hide");
+            } else {
+              element.classList.add("hide");
+            }
+          }
+        
+        });
+      }
+  // Filtro de busqueda
