@@ -166,7 +166,9 @@ h3, p {
     background-color: rgb(255, 255, 255);
     transition: all 0.1s ease 0s;
     border: solid 2px white;
-    
+}
+#pokemons{
+    display: block;
 }
 
 .type {

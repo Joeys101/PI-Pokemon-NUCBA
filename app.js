@@ -1,4 +1,4 @@
-let pokemons = [
+let pokemones = [
         {
             nombre: "Bulbasaur",
             id: 0,
@@ -81,7 +81,7 @@ let pokemons = [
     
     const fragment = document.createDocumentFragment()
     
-    pokemons.forEach(item => {
+    pokemones.forEach(item => {
         const container = document.createElement("div")
         const name = document.createElement("h3")
         const price = document.createElement("p")
@@ -99,8 +99,10 @@ let pokemons = [
         container.appendChild(price)
         
         container.className = "pokemons"
+        container.id = "pokemons"
         img.className = "imgPokemon"
         type.className = "type"
+        type.id = "type"
         
         fragment.appendChild(container)
         
@@ -110,17 +112,20 @@ let pokemons = [
     // Funciones de botones
 
     const lowPrice = document.getElementById("lowPrice")
+   
 
+  
 
-    pokemons.forEach(item =>{
-        lowPrice.addEventListener("click", ()=>{
-            if(item.precio !== "$1.000" ) {
-                remove()
-            } 
+    lowPrice.addEventListener("click", e => {
+        pokemones.forEach(item => {
+            if(item.precio !== "$1.000"){
+                item.nombre = "CARO"
+                console.log(item.nombre);
+                document.getElementById("type").style.display = "none"
+            } else {
+                console.log("BARATO");
+            }
         })
-        
     })
-      
- 
-
+        
     
