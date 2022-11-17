@@ -106,6 +106,7 @@ let pokemones = [
         container.appendChild(name)
         container.appendChild(price)
         
+        
         container.className = "pokemons"
         img.className = "imgPokemon"
         type.className = "type"
@@ -114,6 +115,7 @@ let pokemones = [
         type.id = "type"
         
         container.classList.add(item.caracteristica, item.caracteristica2, "hide");
+        name.classList.add("pokemonName");
 
         divGlobal.appendChild(container)
     }) 
@@ -151,3 +153,22 @@ let pokemones = [
         });
       }
   // Filtro de busqueda
+
+  document.getElementById("buscar").addEventListener("click", () => {
+	
+	let searchInput = document.getElementById("searchBox").value;
+	let elements = document.querySelectorAll(".pokemonName");
+	let cards = document.querySelectorAll(".container");
+
+    	// Loop entre los elementos
+	elements.forEach((element, index) => {
+        // Chequear si el texto contiene un valor que hayamos escrito
+        if (element.innerText.includes(searchInput.toUpperCase())) {
+          // Mostrar las cards filtradas
+          container[index].classList.remove("hide");
+        } else {
+          // Ocultar las demas
+          container[index].classList.add("hide");
+        }
+      });
+    });
