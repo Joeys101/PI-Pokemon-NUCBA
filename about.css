@@ -43,3 +43,13 @@ i {
     margin-top: 3%;
     padding-left: 42% ;
 }
+
+@media screen and (max-width: 720px) {
+    i {
+        margin-top: 3%;
+        padding-left: 28% ;
+    }
+    .info {
+        padding: 30px;
+    }
+}
