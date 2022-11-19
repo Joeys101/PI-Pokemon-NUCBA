@@ -1,0 +1,57 @@
+input {
+    height: 4em;
+    width: 30em;
+    background: none;
+    color: rgb(255, 255, 255);
+    padding: 15px;
+    margin: 10px;
+    border-style: none;
+    border-bottom: solid 1px white;
+}
+
+textarea {
+    margin: 2% 2% 2% 3%;
+    height: 10em;
+    width: 30em;
+    resize: none;
+    border: solid 2px black;
+    background-color: rgba(0, 0, 0, 0.459);
+    color: white;
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+.contentBox {
+    font-family: 'Telex', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    color: white;
+    transition: all 0.1s ease 0s;
+}
+
+
+.contentBox h2 {
+    font-size: 3em;
+}
+
+.contentBox span {
+    font-size: 20px;
+}
+
+.form{
+    margin: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    border-radius: 10px;
+}
+span {
+    margin-top:3%;
+}
