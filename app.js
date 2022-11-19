@@ -114,8 +114,10 @@ let pokemones = [
         img.id = "imgPokemon"
         type.id = "type"
         
+        
         container.classList.add(item.caracteristica, item.caracteristica2, "hide");
         name.classList.add("pokemonName");
+        
 
         divGlobal.appendChild(container)
     }) 
@@ -154,21 +156,19 @@ let pokemones = [
       }
   // Filtro de busqueda
 
-  document.getElementById("buscar").addEventListener("click", () => {
-	
-	let searchInput = document.getElementById("searchBox").value;
-	let elements = document.querySelectorAll(".pokemonName");
-	let cards = document.querySelectorAll(".container");
+  
+document.addEventListener("keyup", e=>{
+  
+  if(e.target.matches("#searchBox")){
+    document.querySelectorAll(".pokemons").forEach(poke =>{
+      if(poke.textContent.toLowerCase().includes(e.target.value.toLowerCase())){
+        poke.classList.remove("hide")
+      } else {
+        poke.classList.add("hide")
+      }
+      
+    })
+  }
+  console.log(e.target.matches("#buscador"));
 
-    	// Loop entre los elementos
-	elements.forEach((element, index) => {
-        // Chequear si el texto contiene un valor que hayamos escrito
-        if (element.innerText.includes(searchInput.toUpperCase())) {
-          // Mostrar las cards filtradas
-          container[index].classList.remove("hide");
-        } else {
-          // Ocultar las demas
-          container[index].classList.add("hide");
-        }
-      });
-    });
+})
