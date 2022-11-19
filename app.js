@@ -95,12 +95,15 @@ let pokemones = [
     let price = document.createElement("p")
     let img = document.createElement("img")
     let type = document.createElement("img")
+    let pokedex = document.createElement("h3")
+  
 
         price.textContent = "Precio:" + " " + "$" + item.precio
         name.textContent = item.nombre
         img.src = item.image
         type.src = item.tipo
-        
+        pokedex.textContent = item.pokedex
+
         container.appendChild(img)
         container.appendChild(type)
         container.appendChild(name)
@@ -113,10 +116,10 @@ let pokemones = [
         container.id = "pokemons"  
         img.id = "imgPokemon"
         type.id = "type"
-        
+   
         
         container.classList.add(item.caracteristica, item.caracteristica2, "hide");
-        name.classList.add("pokemonName");
+        
         
 
         divGlobal.appendChild(container)
@@ -125,18 +128,6 @@ let pokemones = [
     // Funciones de botones
 
     function filterProduct(value) {
-	
-    
-        let buttons = document.querySelectorAll(".buttonValue");
-        buttons.forEach((button) => {
-          
-          if (value.toUpperCase() == button.innerText.toUpperCase()) {
-            button.classList.add("active");
-          } else {
-            button.classList.remove("active");
-          }
-        }); 
-    
 
         let elements = document.querySelectorAll(".pokemons");
     
@@ -172,3 +163,4 @@ document.addEventListener("keyup", e=>{
   console.log(e.target.matches("#buscador"));
 
 })
+
