@@ -95,19 +95,20 @@ let pokemones = [
     let price = document.createElement("p")
     let img = document.createElement("img")
     let type = document.createElement("img")
-    let pokedex = document.createElement("h3")
+    let botonDeCompras = document.createElement("button")
   
 
         price.textContent = "Precio:" + " " + "$" + item.precio
         name.textContent = item.nombre
         img.src = item.image
         type.src = item.tipo
-        pokedex.textContent = item.pokedex
+        botonDeCompras.textContent = "Agregar al carrito"
 
         container.appendChild(img)
         container.appendChild(type)
         container.appendChild(name)
         container.appendChild(price)
+        container.appendChild(botonDeCompras)
         
         
         container.className = "pokemons"
@@ -116,6 +117,7 @@ let pokemones = [
         container.id = "pokemons"  
         img.id = "imgPokemon"
         type.id = "type"
+        botonDeCompras.id = "botonDeCompras"
    
         
         container.classList.add(item.caracteristica, item.caracteristica2, "hide");
@@ -163,4 +165,6 @@ document.addEventListener("keyup", e=>{
   console.log(e.target.matches("#buscador"));
 
 })
+
+//Carrito de compras
 

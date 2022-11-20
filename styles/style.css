@@ -80,6 +80,7 @@ ul {
 body {
     margin-top: 100px;
     background-color: rgb(145, 0, 0);
+    
 }
 /* Boton y filtro*/
 
@@ -145,7 +146,17 @@ h3, p {
 .imgPokemon {
     width: 135px;
     height: 135px;
-    margin: -50px 0 0 150px;
+    margin: -50px 0 -10px 150px;
+}
+.pokemons {
+    margin: 30px 10px 60px 30px;
+    width: 400px;
+    height: 70%;
+    border-radius: 30px;
+    background-color: rgb(255, 255, 255);
+    transition: all 0.1s ease 0s;
+    border: solid 2px white;
+    
 }
 .pokemons:hover {
     
@@ -155,17 +166,6 @@ h3, p {
     transition: all 0.3s ease 0s;
     
    
-}
-.pokemons {
-    margin: 30px 10px 60px 10px;
-    padding: 0px
-    width: 60%;
-    height: 70%;
-    border-radius: 30px;
-    background-color: rgb(255, 255, 255);
-    transition: all 0.1s ease 0s;
-    border: solid 2px white;
-    
 }
 .hide {
     display: none;
@@ -178,6 +178,15 @@ h3, p {
     border: solid 2px white;
     border-radius: 100%;
 }
+/* Carrito de compras */
+
+#botonDeCompras {
+  margin: -5% 0 10px 37%;
+  background-color: rgb(145, 0, 0);
+  font-family: 'Telex', sans-serif;
+  transition: all 0.3s ease 0s;
+
+}
 
 /*Responsive*/
 
@@ -188,20 +197,19 @@ h3, p {
     }
     .imgPokemon{
         max-width: 50%;
-        position: relative;
         margin-left: 20%;
     }
   
     .pokemons {
-        margin:0 10px 40% 10px;
-        height: 70%;
+        margin:0 0 40% 12px;
+        height: 220px;
+        width: 200px;
     }
     .pokemonBox {
       grid-template-columns: auto auto;
       grid-column-gap: 1em;
     }
     .type {
-        position: relative;
         margin-left: 40%;
     }
     button {
@@ -217,5 +225,11 @@ h3, p {
     }
     li {
         margin: 5px
+    }
+    #botonDeCompras {
+        margin: -5px 0 3% 27%;
+        max-width: 50%;
+        align-items: center;
+        font-size: 12px;
     }
   }
