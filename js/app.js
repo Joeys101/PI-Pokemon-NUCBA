@@ -1,90 +1,8 @@
-let pokemones = [
-        {
-            nombre: "Bulbasaur",
-            id: 0,
-            caracteristica: "Starter",
-            caracteristica2: "MenorPrecio",
-            precio: 1000,
-            image:"./pokemon/bulbasaur.png",
-            tipo: "./pokemon/Planta.png"
-        },
-        {
-            nombre: "Squirtle",
-            id: 1,
-            caracteristica: "Starter",
-            caracteristica2: "MenorPrecio",
-            precio: 1000,
-            image:"./pokemon/squirtle.png",
-            tipo: "./pokemon/Agua.png"
-        },
-        {
-            nombre: "Charmander",
-            id: 2,
-            caracteristica: "Starter",
-            caracteristica2: "MenorPrecio",
-            precio: 1000,
-            image:"./pokemon/charmander.png",
-            tipo: "./pokemon/Fuego.png"
-        },
-        {
-            nombre: "Treecko",
-            id: 3,
-            caracteristica: "Starter",
-            caracteristica2: "MenorPrecio",
-            precio: 2000,
-            image:"./pokemon/treecko.png",
-            tipo: "./pokemon/Planta.png"
-        },
-        {
-            nombre: "Mudkip",
-            id: 4,
-            caracteristica: "Starter",
-            caracteristica2: "MenorPrecio",
-            precio: 1700,
-            image:"./pokemon/mudkip.png",
-            tipo:"./pokemon/Agua.png"
-        },
-        {
-            nombre: "Torchic",
-            id: 5,
-            caracteristica: "Starter",
-            caracteristica2: "MenorPrecio",
-            precio: 1500,
-            image:"./pokemon/torchic.png",
-            tipo:"./pokemon/Fuego.png"
-        },
-        {
-            nombre: "Kyogre",
-            id: 6,
-            caracteristica: "Legendario",
-            caracteristica2: "MayorPrecio",
-            precio: 19000,
-            image:"./pokemon/kyogre.png",
-            tipo:"./pokemon/Agua.png"
-        },
-        {
-            nombre: "Zekrom",
-            id: 7,
-            caracteristica: "Legendario",
-            caracteristica2: "MayorPrecio",
-            precio: 25000,
-            image:"./pokemon/zekrom.png",
-            tipo:"./pokemon/Electrico.png"
-        },
-        {
-            nombre: "Darkrai",
-            id: 8,
-            caracteristica: "Singular",
-            caracteristica2: "MayorPrecio",
-            precio: 50000,
-            image:"./pokemon/darkrai.png",
-            tipo:"./pokemon/Siniestro.png"
-        },
-    
-        
-    ]
-    
-    
+const shopContent = document.getElementById("pokemonBox")
+const verCarrito = document.getElementById("verCarrito")
+const modalContainer = document.getElementById("modalContainer")
+
+let carrito = [];
     // Creacion de Pokemons
     const divGlobal = document.querySelector(".pokemonBox")
     
@@ -96,20 +14,12 @@ let pokemones = [
     let img = document.createElement("img")
     let type = document.createElement("img")
     let botonDeCompras = document.createElement("button")
-  
-
+    
         price.textContent = "Precio:" + " " + "$" + item.precio
         name.textContent = item.nombre
         img.src = item.image
         type.src = item.tipo
         botonDeCompras.textContent = "Agregar al carrito"
-
-        container.appendChild(img)
-        container.appendChild(type)
-        container.appendChild(name)
-        container.appendChild(price)
-        container.appendChild(botonDeCompras)
-        
         
         container.className = "pokemons"
         img.className = "imgPokemon"
@@ -118,13 +28,26 @@ let pokemones = [
         img.id = "imgPokemon"
         type.id = "type"
         botonDeCompras.id = "botonDeCompras"
-   
-        
-        container.classList.add(item.caracteristica, item.caracteristica2, "hide");
-        
-        
 
+
+        container.appendChild(img)
+        container.appendChild(type)
+        container.appendChild(name)
+        container.appendChild(price)
+        container.appendChild(botonDeCompras)
         divGlobal.appendChild(container)
+
+        container.classList.add(item.caracteristica, item.caracteristica2, "hide");    
+        
+        botonDeCompras.addEventListener("click", ()=>{
+          carrito.push({
+            id : item.id,
+            img : item.image,
+            nombre : item.nombre,
+            precio : item.precio,
+          }) 
+          console.log(carrito);
+        })
     }) 
 
     // Funciones de botones
@@ -170,22 +93,48 @@ document.addEventListener("keyup", e=>{
 
 //Funcion abrir y cerrar carrito
 
-function closeCart() {
-	const cart = document.querySelector('.producstOnCart');
-	cart.classList.toggle('hide');
-	document.querySelector('body').classList.toggle('stopScrolling')
-}
+verCarrito.addEventListener("click", () => {
+  modalContainer.innerHTML = ""
+  modalContainer.style.display = "flex"
+ const modalHeader = document.createElement("div")
+ modalHeader.className = "modalHeader"
+ modalHeader.innerHTML = `
+  <h1 class = "modalHeaderTitle">Carrito</h1>
+ `
+ modalContainer.append(modalHeader)
+
+ const modalButton = document.createElement("h1")
+ modalButton.innerText = "X"
+ modalButton.className = "modalHeaderButton"
+
+ modalButton.addEventListener("click", () => {
+  modalContainer.style.display = "none";
+ });
+
+ modalHeader.append(modalButton)
 
 
-const openShopCart = document.querySelector('.shoppingCartButton');
-openShopCart.addEventListener('click', () => {
-	const cart = document.querySelector('.producstOnCart');
-	cart.classList.toggle('hide');
-	document.querySelector('body').classList.toggle('stopScrolling');
-});
+ carrito.forEach((product) => {
+ let carritoContent = document.createElement("div")
+ carritoContent.className = "modalContent"
+ carritoContent.innerHTML = `
+  <img src= "${product.img}">
+  <h3 class="nombreCarrito">${product.nombre}</h3>
+  <p class="precioCarrito">$${product.precio}</p>
+ `
+  modalContainer.append(carritoContent)
+})
+
+  const total = carrito.reduce((acc, el) => acc + el.precio, 0)
+  const totalBuying = document.createElement("div")
+  totalBuying.className = "totalContent"
+  totalBuying.innerHTML = `Total a pagar: $${total}`
+  modalContainer.append(totalBuying)
+})
 
 
-const closeShopCart = document.querySelector('#closeButton');
-const overlay = document.querySelector('.overlay');
-closeShopCart.addEventListener('click', closeCart);
-overlay.addEventListener('click', closeCart);
+
+
+
+
+
