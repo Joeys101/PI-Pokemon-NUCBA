@@ -1,8 +1,9 @@
 const shopContent = document.getElementById("pokemonBox")
 const verCarrito = document.getElementById("verCarrito")
 const modalContainer = document.getElementById("modalContainer")
+const cantidadCarrito = document.getElementById("cantidadCarrito")
 
-let carrito = [];
+let carrito =  JSON.parse(localStorage.getItem("carrito")) || [];
     // Creacion de Pokemons
     const divGlobal = document.querySelector(".pokemonBox")
     
@@ -40,14 +41,28 @@ let carrito = [];
         container.classList.add(item.caracteristica, item.caracteristica2, "hide");    
         
         botonDeCompras.addEventListener("click", ()=>{
+
+        const repeat = carrito.some((repeatProduct) => repeatProduct.id === item.id)
+        
+        if(repeat){
+          carrito.map((prod) => {
+            if(prod.id === item.id){
+              prod.cantidad++;
+            }
+          })
+        } else {
           carrito.push({
             id : item.id,
             img : item.image,
             nombre : item.nombre,
             precio : item.precio,
+            cantidad : item.cantidad,
           }) 
-          console.log(carrito);
-        })
+        }
+        carritoCounter()
+        saveLocal()
+        cerrarCarrito()
+      })
     }) 
 
     // Funciones de botones
@@ -89,50 +104,14 @@ document.addEventListener("keyup", e=>{
 
 })
 
-//Carrito de compras
+//LocalStorage
 
-//Funcion abrir y cerrar carrito
+const saveLocal = () => {
 
-verCarrito.addEventListener("click", () => {
-  modalContainer.innerHTML = ""
-  modalContainer.style.display = "flex"
- const modalHeader = document.createElement("div")
- modalHeader.className = "modalHeader"
- modalHeader.innerHTML = `
-  <h1 class = "modalHeaderTitle">Carrito</h1>
- `
- modalContainer.append(modalHeader)
+localStorage.setItem("carrito",JSON.stringify(carrito))
+}
 
- const modalButton = document.createElement("h1")
- modalButton.innerText = "X"
- modalButton.className = "modalHeaderButton"
-
- modalButton.addEventListener("click", () => {
-  modalContainer.style.display = "none";
- });
-
- modalHeader.append(modalButton)
-
-
- carrito.forEach((product) => {
- let carritoContent = document.createElement("div")
- carritoContent.className = "modalContent"
- carritoContent.innerHTML = `
-  <img src= "${product.img}">
-  <h3 class="nombreCarrito">${product.nombre}</h3>
-  <p class="precioCarrito">$${product.precio}</p>
- `
-  modalContainer.append(carritoContent)
-})
-
-  const total = carrito.reduce((acc, el) => acc + el.precio, 0)
-  const totalBuying = document.createElement("div")
-  totalBuying.className = "totalContent"
-  totalBuying.innerHTML = `Total a pagar: $${total}`
-  modalContainer.append(totalBuying)
-})
-
-
+JSON.parse(localStorage.getItem("carrito"))
 
 
 

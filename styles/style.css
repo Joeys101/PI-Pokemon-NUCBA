@@ -149,7 +149,7 @@ button:hover{
     margin: -50px 0 0px 150px;
 }
 .pokemons {
-    margin: 30px 10px 60px 30px;
+    margin: 30px 10px 60px 15px;
     width: 400px;
     height: 70%;
     border-radius: 30px;
@@ -182,7 +182,7 @@ button:hover{
 /* Carrito de compras */
 
 .modalContainer {
-    width: 350px;
+    width: 500px;
     margin: 0 2%;
     max-height: 88vh;
     background-color: rgb(255, 255, 255);
@@ -224,9 +224,8 @@ button:hover{
     justify-content: space-around;
     background-color: black;
     color: #fff;
-    width: 100%;
+    width: 500px;
     position: fixed;
-    width: 350px;
 
 }
 
@@ -267,6 +266,12 @@ button:hover{
     text-align: center;
     padding-top: 20px;
 }
+.carritoVacio {
+    font-size: 25px;
+    padding: 20px;
+    text-align: center;
+    padding-top: 50px;
+}
 
 #botonDeCompras {
   margin: -5% 0 10px 37%;
@@ -289,8 +294,38 @@ button:hover{
     cursor: pointer;
     background-color: rgb(30, 31, 38);
 }
+.deleteProduct {
+    cursor: pointer;
+    margin-left: 20px;
+    margin-top: -30px;
+}
+.cantidadCarrito {
+    background-color:orange;
+    color: white;
+    transition: all 0.3s ease 0s;
+    border-radius: 80%;
+    padding: 4px;
+    padding-right: 8px;
+    padding-left: 8px;
+    top: 30px;
+    right: 8px;
+    position: absolute;
+    display: none;
+}
 
+.sumar {
+ cursor: pointer;   
+ margin-right: 25px;
+}
 
+.restar {
+ cursor: pointer;   
+ margin-left: 25px;
+}
+.compraTotal {
+    margin-top: -8px;
+    margin-bottom: 5px;
+}
 /*Responsive*/
 
 @media screen and (max-width: 720px) {
@@ -316,11 +351,12 @@ button:hover{
     }
     .modalContainer {
         font-size: 5px;
-        max-width: 50%;
+        max-width: 55%;
     }
     .modalHeader{
-        max-width: 50%;
-        padding-top: 2%;
+        max-width: 55%;
+        padding-top: 1%;
+        font-size: 8px;
     }
   
     .totalContent{
@@ -359,8 +395,48 @@ button:hover{
         align-items: center;
         font-size: 12px;
     }
+ 
     .modalContainer > div > img {
-        height: 80px;
-        width: 80px;
+        height: 30px;
+        width: 30px;
+        margin-top: -2px;
+    }
+
+    .modalContainer p {
+        margin-top: 20px;
+        font-size: 10px;
+    }
+    .modalContainer h3 {
+        margin-bottom: -10px;
+        font-size: 12px;
+    }
+    .cantidadCarrito{
+        font-size: 10px;
+        padding: 2px;
+        padding-right: 4px;
+        padding-left: 4px;
+    }
+    .sumar{
+        font-size: 15px;
+        margin-right: 10px;
+    }
+    .restar{
+        font-size: 15px;
+        margin-left: 10px;
+    }
+    .deleteProduct{
+        font-size: 10px;
+        margin-top: 1px;
+    }
+    .Cantidad {
+        margin-left:10px ;
+        margin-right:10px ;
+    }
+    .carritoVacio {
+        font-size: 15px;
+    }
+    .compraTotal {
+        margin-bottom: 5px;
+        margin-top: -5px;
     }
   }
